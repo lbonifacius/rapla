@@ -23,6 +23,7 @@ public interface DynamicTypeAnnotations
     String VALUE_CLASSIFICATION_TYPE_RESOURCE="resource";
     String VALUE_CLASSIFICATION_TYPE_RESERVATION="reservation";
     String VALUE_CLASSIFICATION_TYPE_PERSON="person";
+    String VALUE_CLASSIFICATION_TYPE_AVAILABILITY="availability";
     String VALUE_CLASSIFICATION_TYPE_RAPLATYPE="rapla";
     
     String KEY_COLORS="colors";

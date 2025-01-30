@@ -147,6 +147,9 @@ public class ReservationInfoEdit extends RaplaGUIComponent
         lastClassification = classification;
 
         DynamicType[] types = getQuery().getDynamicTypes( DynamicTypeAnnotations.VALUE_CLASSIFICATION_TYPE_RESERVATION);
+        // TODO Availability
+        DynamicType[] availability_types = getQuery().getDynamicTypes( DynamicTypeAnnotations.VALUE_CLASSIFICATION_TYPE_AVAILABILITY);
+        
         DynamicType dynamicType = classification.getType();
         List<DynamicType> creatableTypes = new ArrayList<>();
         User user = getUser();
@@ -157,6 +160,13 @@ public class ReservationInfoEdit extends RaplaGUIComponent
                 creatableTypes.add( type );
             
         }
+        for ( DynamicType type: availability_types)
+        {
+            if (permissionController.canCreate(type, user))
+                creatableTypes.add( type );
+            
+        }
+        
         RaplaListComboBox jComboBox =  new RaplaListComboBox( getRaplaLocale(), creatableTypes.toArray());
 		typeSelector =  jComboBox;
         typeSelector.setEnabled( creatableTypes.size() > 1);
