@@ -1273,6 +1273,8 @@ public class AllocatableSelection extends RaplaGUIComponent implements Appointme
         int conflictCount = 0; // temp value for conflicts
         int permissionConflictCount = 0; // temp value for conflicts that are the result of denied permission
         RequestStatus requestStatus;
+        
+        // Diese Klasse erweitern, um zu speichern, dass nur Verfügbarkeiten, zu den Konflikten geführt haben.
     }
 
     // calculates the number of conflicting appointments for this allocatable
@@ -1303,6 +1305,8 @@ public class AllocatableSelection extends RaplaGUIComponent implements Appointme
             	DynamicType type = reservation.getClassification().getType();
             	// Die Typenklasse, also resource, reservation, person und (neu bei uns) availability
             	String classificationtype = type.getAnnotation(DynamicTypeAnnotations.KEY_CLASSIFICATION_TYPE);
+            	
+            	// Hier die Logik einfügen, die ermittelt, dass ausschließlich Überschneidungen mit Verfügbarkeiten zum Konflikt geführt haben.
             	
                 if (!holdBackConflicts)
                 {
@@ -2035,6 +2039,9 @@ public class AllocatableSelection extends RaplaGUIComponent implements Appointme
             Date today = getQuery().today();
 
             AllocationRendering allocBinding = calcConflictingAppointments(allocatable);
+            
+            // Hier können Sie die Erweiterung der Klasse AllocationRendering nutzen, um ein anderen Icon für Verfügbarkeitsüberschneidung anzuzeigen.
+            
             if (allocBinding.conflictCount == 0)
             {
                 return getAvailableIcon(allocatable);
